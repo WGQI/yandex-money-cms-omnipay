@@ -122,6 +122,16 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
 	{
 		 return $this->getParameter('comment');
 	}
+	
+	public function setMessage($value)
+	{
+		  return $this->setParameter('message', $value);
+	}
+
+	public function getMessage()
+	{
+		 return $this->getParameter('message');
+	}
 
     	public function setShortDest($value)
     	{
@@ -145,13 +155,14 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
 		$data['writable-targets'] = 'false';
 	    	$data['customerEmail'] = $this->getCustomerEmail();
 		$data['comment-needed'] = 'true';
+	    	$data['message'] = $this->getMessage();
 		$data['label'] = $this->getOrderId();
 		$data['quickpay-form'] = 'shop';
 		$data['targets'] = 'Транзакция ' . $this->getOrderId();
 		$data['sum'] = $this->getAmount();
 		$data['comment'] = $this->getComment();
 		$data['need-fio'] = 'false';
-		$data['need-email'] = 'yes';
+		$data['need-email'] = 'false';
 		$data['need-phone'] = 'false';
 		$data['need-address'] = 'false';
 		

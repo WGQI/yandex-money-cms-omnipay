@@ -58,6 +58,16 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
     {
         return $this->setParameter('orderNumber', $value);
     }
+	
+	public function getCustomerEmail()
+    {
+        return $this->getParameter('customerEmail');
+    }
+
+	public function setCustomerEmail($value)
+    {
+        return $this->setParameter('customerEmail', $value);
+    }
 
 	public function getOrderId()
     {
@@ -133,13 +143,14 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
 		$data['formcomment'] = $this->getFormComment(); // Имя магазина
 		$data['short-dest'] = $this->getShortDest(); // Описание покупки
 		$data['writable-targets'] = 'false';
+	    	$data['customerEmail'] = $this->getCustomerEmail();
 		$data['comment-needed'] = 'true';
 		$data['label'] = $this->getOrderId();
 		$data['quickpay-form'] = 'shop';
 		$data['targets'] = 'Транзакция ' . $this->getOrderId();
 		$data['sum'] = $this->getAmount();
 		$data['comment'] = $this->getComment();
-		$data['need-fio'] = 'no';
+		$data['need-fio'] = 'false';
 		$data['need-email'] = 'yes';
 		$data['need-phone'] = 'false';
 		$data['need-address'] = 'false';

@@ -159,7 +159,7 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
 		$data['label'] = $this->getOrderId();
 		$data['quickpay-form'] = 'shop';
 		$data['targets'] = 'Транзакция ' . $this->getOrderId();
-		$data['withdraw_amount'] = $this->getAmount();
+		$data['sum'] = $this->getAmount();
 		$data['comment'] = $this->getComment();
 		$data['need-fio'] = 'false';
 		$data['need-email'] = 'false';

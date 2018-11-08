@@ -68,6 +68,15 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
     {
         return $this->setParameter('customerEmail', $value);
     }
+	
+	public function getOrderDetails()
+    {
+        return $this->getParameter('orderDetails');
+    }
+	public function setOrderDetails($value)
+    {
+        return $this->setParameter('orderDetails', $value);
+    }
 
 	public function getOrderId()
     {
@@ -155,6 +164,7 @@ class IndividualPurchaseRequest extends IndividualAuthorizeRequest
 		$data['writable-targets'] = 'false';
 	    	$data['customerEmail'] = $this->getCustomerEmail();
 		$data['comment-needed'] = 'true';
+	    	$data['orderDetails'] = $this->getOrderDetails();
 	    	$data['message'] = $this->getMessage();
 		$data['label'] = $this->getOrderId();
 		$data['quickpay-form'] = 'shop';
